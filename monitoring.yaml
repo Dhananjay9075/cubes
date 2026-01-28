@@ -1,0 +1,70 @@
+# Cubes OLAP Monitoring Configuration
+# Enterprise-grade monitoring and metrics system
+
+# Enable/disable monitoring system
+enabled: true
+
+# Logging level for monitoring system
+log_level: INFO
+
+# Metrics collection configuration
+metrics:
+  enabled: true
+  collection_interval: 30  # seconds
+  retention_hours: 24
+  max_history_size: 1000
+  export_formats: ['json', 'prometheus']
+  export_interval: 300  # seconds
+  export_directory: "monitoring"
+
+# Query monitoring configuration
+query:
+  enabled: true
+  track_slow_queries: true
+  slow_query_threshold: 1.0  # seconds
+  track_query_patterns: true
+  max_query_history: 1000
+  analyze_query_complexity: true
+
+# Performance tracking configuration
+performance:
+  enabled: true
+  tracking_interval: 60
+  track_memory_usage: true
+  track_cpu_usage: true
+  track_database_connections: true
+  anomaly_detection: true
+  anomaly_threshold_multiplier: 2.0
+
+# System health monitoring configuration
+system:
+  enabled: true
+  check_interval: 60
+  max_history_size: 100
+  
+  # Resource thresholds
+  cpu_warning_threshold: 70.0
+  cpu_critical_threshold: 90.0
+  memory_warning_threshold: 75.0
+  memory_critical_threshold: 90.0
+  disk_warning_threshold: 80.0
+  disk_critical_threshold: 95.0
+  
+  # Database-specific thresholds
+  db_connection_warning: 50
+  db_connection_critical: 100
+  db_query_time_warning: 2.0
+  db_query_time_critical: 5.0
+
+# Alert configuration
+alerts:
+  enabled: true
+  email_notifications: false
+  webhook_url: null
+  alert_cooldown: 300  # seconds
+  
+  # Alert types
+  slow_query_alert: true
+  performance_alert: true
+  system_alert: true
+  error_rate_alert: true
